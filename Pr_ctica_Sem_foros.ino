@@ -5,6 +5,7 @@ int verde=26;     //definimos el valor del pin para el led verde
 int ledIntensidadVerde = 3;
 int ledIntensidadRojo = 2;
 int boton=13;
+int bocina=28;
 
 int rojoPeaton=6;
 int verdePeaton=7;
@@ -29,11 +30,11 @@ void setup() {
   pinMode(verdePeaton,OUTPUT);
   pinMode(ledIntensidadVerde, OUTPUT);
   pinMode(ledIntensidadRojo, OUTPUT);
+  pinMode(bocina, OUTPUT);
 }
 
 void loop() {
-  Serial.println(analogRead(pot)/4.5);
-  Serial.println(227-analogRead(pot)/4.5);
+  
   analogWrite(ledIntensidadRojo, analogRead(pot)/4.5);
   analogWrite(ledIntensidadVerde, 227-analogRead(pot)/4.5);
   if(valorPot > 0){
@@ -54,7 +55,7 @@ void loop() {
   digitalWrite(rojoPeaton, HIGH);
   digitalWrite(verde, HIGH);
   if (digitalRead(boton) == LOW && valorPot == 0){
-    Serial.println("Usted puede pasar");
+    Serial.println("Espere...");
     estado1();
   }
    delay(100); 
@@ -65,6 +66,7 @@ void estado1(){
 
  for(int i=0; i<5; i++){
   digitalWrite(verde,HIGH); //encendemos el led rojo
+  tone(bocina, 1000, 500);
   delay(500);             //esperamos 2 segundos
   digitalWrite(verde,LOW);  //apagamos el led rojoHIGH
   delay(500);              //esperamos medio segundo 
@@ -85,11 +87,13 @@ void estado1(){
 void estado2(){
   digitalWrite(rojoPeaton, LOW);
   digitalWrite(verdePeaton, HIGH);
+  Serial.println("Ahora puede pasar...");
   delay(5000);
 
   
  for(int i=0; i<5; i++){
   digitalWrite(verdePeaton,HIGH); //encendemos el led rojo
+  tone(bocina, 1000, 400);
   delay(400);             //esperamos 2 segundos
   digitalWrite(verdePeaton,LOW);  //apagamos el led rojo
   delay(400);              //esperamos medio segundo 
