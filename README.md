@@ -30,4 +30,8 @@ en forma de luces para medir la intensidad. Por último habrá un pitido cuando 
 
 ### Forma de conectar
 
- ![]()
+ ![](images/como_conectar.jpg)
+
+### Vista Previa
+ ![](images/previa1.jpg) 
+ ![](images/previa2.jpg)
